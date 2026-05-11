@@ -36,6 +36,7 @@ import { RailroadLayer } from "./layers/RailroadLayer";
 import { ReplayPanel } from "./layers/ReplayPanel";
 import { SAMRadiusLayer } from "./layers/SAMRadiusLayer";
 import { SettingsModal } from "./layers/SettingsModal";
+import { SkinTestWinModal } from "./layers/SkinTestWinModal";
 import { SpawnTimer } from "./layers/SpawnTimer";
 import { StructureIconsLayer } from "./layers/StructureIconsLayer";
 import { StructureLayer } from "./layers/StructureLayer";
@@ -162,6 +163,13 @@ export function createRenderer(
   }
   winModal.eventBus = eventBus;
   winModal.game = game;
+
+  const skinTestWinModal = document.querySelector(
+    "skin-test-win-modal",
+  ) as SkinTestWinModal;
+  if (skinTestWinModal instanceof SkinTestWinModal) {
+    skinTestWinModal.eventBus = eventBus;
+  }
 
   const replayPanel = document.querySelector("replay-panel") as ReplayPanel;
   if (!(replayPanel instanceof ReplayPanel)) {
@@ -311,6 +319,7 @@ export function createRenderer(
     controlPanel,
     playerInfo,
     winModal,
+    skinTestWinModal,
     replayPanel,
     settingsModal,
     teamStats,

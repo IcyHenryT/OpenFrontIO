@@ -239,6 +239,7 @@ export interface JoinLobbyEvent {
   gameStartInfo?: GameStartInfo;
   // GameRecord exists when replaying an archived game.
   gameRecord?: GameRecord;
+  isSkinTest?: boolean;
   source?: "public" | "private" | "host" | "matchmaking" | "singleplayer";
   publicLobbyInfo?: GameInfo | PublicGameInfo;
 }
@@ -787,6 +788,7 @@ class Client {
       playerRole,
       gameStartInfo: lobby.gameStartInfo ?? lobby.gameRecord?.info,
       gameRecord: lobby.gameRecord,
+      isSkinTest: lobby.isSkinTest,
     });
 
     if (this.mostRecentJoinEvent !== event.timeStamp) {

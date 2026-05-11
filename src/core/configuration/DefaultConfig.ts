@@ -595,6 +595,9 @@ export class DefaultConfig implements Config {
   }
 
   percentageTilesOwnedToWin(): number {
+    if (this._gameConfig.percentageTilesOwnedToWin !== undefined) {
+      return this._gameConfig.percentageTilesOwnedToWin;
+    }
     if (this._gameConfig.gameMode === GameMode.Team) {
       return 95;
     }
